@@ -1,0 +1,101 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+:root{
+    --colorPrincipal:#153459;
+    --font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.card-main{
+    border: 2px solid var(--colorPrincipal);
+    background-color: var(--colorPrincipal);
+    width: 80%;
+    height: 350px;
+    margin-top: 15%;
+    margin-left: 10%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.main-titulo{
+    margin-top: 3%;
+    font-size: 50px;
+    font-family: var(--font);
+}
+
+.main-subtitulo{
+    margin-top: 3%;
+    font-size: 30px;
+    font-family: var(--font);
+}
+
+.enlaces{
+    margin-top: 6%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.enlace-retirar{
+    border: 1px solid green;
+    border-radius: 10px;
+    width: 25%;
+    height: 100px;
+    padding-top: 35px;
+}
+
+
+.enlace-retirar a{
+    color: white;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 17px;
+}
+
+.enlace-retirar a:hover{
+    color: black;
+}
+
+.enlace-depositar{
+    border: 1px solid red;
+    border-radius: 10px;
+    width: 25%;
+    height: 100px;
+    padding-top: 35px;
+}
+
+.enlace-depositar a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 17px;
+}
+
+.enlace-depositar a:hover {
+    color: black;
+}
+
+.enlace-nuevaTrajeta{
+    border: 1px solid blue;
+    border-radius: 10px;
+    width: 25%;
+    height: 100px;
+    padding-top: 35px;
+}
+
+.enlace-nuevaTrajeta a{
+    color: white;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 17px;
+}
+
+.enlace-nuevaTrajeta a:hover {
+    color: black;
+}

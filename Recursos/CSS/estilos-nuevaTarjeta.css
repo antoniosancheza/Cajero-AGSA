@@ -1,0 +1,120 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+:root {
+    --colorPrincipal: #153459;
+    --font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.card-main {
+    border: 2px solid var(--colorPrincipal);
+    background-color: var(--colorPrincipal);
+    width: 80%;
+    height: 790px;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    margin-left: 10%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.main-titulo {
+    margin-top: 3%;
+    font-size: 50px;
+    font-family: var(--font);
+}
+
+.main-subtitulo {
+    margin-top: 3%;
+    font-size: 30px;
+    font-family: var(--font);
+}
+
+.formulario{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.formulario label{
+    font-size: 20px;
+}
+
+.input-nombre{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 68%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-email{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 59%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-apellidoP, .input-apellidoM, .input-estado, .input-cp{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 40%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-calle{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 74%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-colonia{
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 71%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.input-submit{
+    margin-top: 3%;
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.input-submit:hover{
+    color: black;
+}
+
+.input-cancelar{
+    padding: 6px 36% 6px 36%;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+}
+
+.input-cancelar:hover{
+    color: black;
+}

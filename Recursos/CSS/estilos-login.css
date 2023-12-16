@@ -1,0 +1,60 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+:root {
+    --colorPrincipal: #153459;
+    --font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-main {
+    border: 2px solid var(--colorPrincipal);
+    background-color: var(--colorPrincipal);
+    width: 80%;
+    height: 350px;
+    margin-top: 15%;
+    margin-left: 10%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.formulario-label{
+    margin-top: 10%;
+    font-size: 30px;
+    font-family: var(--font);
+}
+
+.formulario-password{
+    margin-top: 8%;
+    text-align: center;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.formulario-submit{
+    margin-top: 6%;
+    width: 100px;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+}
+
+.formulario-submit:hover{
+    color: black;
+}
+
+.formulario-cancelar{
+    margin-top: 6%;
+    padding: 3px 5px;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.formulario-cancelar:hover{
+    color: black;
+}
