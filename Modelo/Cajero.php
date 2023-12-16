@@ -18,8 +18,10 @@ class Cajero{
     private $estado;
     private $codigoPostal;
 
+    private $nip;
+
     //Declaracion del constructor
-    public function __construct($nombre, $apellidoP, $apellidoM, $email, $calle, $colonia, $estado, $codigoPostal){
+    public function iniciarlizar($nombre, $apellidoP, $apellidoM, $email, $calle, $colonia, $estado, $codigoPostal){
         $this -> nombre = $nombre;
         $this -> apellidoP = $apellidoP;
         $this-> apellidoM = $apellidoM;
@@ -37,7 +39,7 @@ class Cajero{
         $nip_aleatorio = sprintf('%04d', rand(0, 9999));
         $nip_encriptado = md5($nip_aleatorio);
 
-        //Validacion si existe un usuario con ese correo
+        //Validacion si existe un usuario con ese nombre
         $registro = mysqli_query($conexion ->conectorBD(), "SELECT * FROM usuarios WHERE usuario_nombre = '$this->nombre' OR usuario_email = '$this->email'");
         if($reg = mysqli_fetch_array($registro)){
             echo '<script>alert("El usuario o el correo electronico ya existe")</script>';
@@ -51,6 +53,26 @@ class Cajero{
         }
 
         $conexion -> cerrarBD();
+    }
+
+    public function login($conexion, $nip){
+        $nip_encriptado = md5($nip);
+
+        $login = mysqli_query($conexion ->conectorBD(), "SELECT * FROM usuarios WHERE usuario_nip = '$nip_encriptado'");
+        if($log = mysqli_fetch_array($login)){
+            session_start();
+            $_SESSION['usuario_id'] = $log['usuario_id'];
+            $_SESSION['usuario_nombre'] = $log['usuario_nombre'];
+            $_SESSION['usuario_apellidoP'] = $log['usuario_apellidoP'];
+            $_SESSION['usuario_saldo'] = $log['usuario_saldo'];
+
+            header('Location: ../Vista/index_usuario.php');
+        }else{
+            echo '<script>alert("El es NIP incorrecto")</script>';
+            header('refresh:0.5; url=../Vista/login.html');
+        }
+
+        $conexion->cerrarBD();
     }
 }
 ?>

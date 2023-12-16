@@ -15,10 +15,11 @@
     <main>
         <div class="card-main">
             <divm class="main-formulario">
-                <form action="" method="post">
+                <form action="../Control/CajeroControl.php" method="post">
                     <label class="formulario-label">Por favor, ingrese su NIP.</label><br>
-                    <input type="password" name="password" id="password" class="formulario-password" maxlength="4" required><br>
+                    <input type="password" name="nip" id="nip" class="formulario-password" maxlength="4" required><br>
                     <input type="submit" class="formulario-submit bg-primary" value="Ingresar">
+                    <input type="hidden" name="option" value="2">
                     <a href="../index.html" class="formulario-cancelar bg-danger">Cancelar</a>
                 </form>
             </div>
