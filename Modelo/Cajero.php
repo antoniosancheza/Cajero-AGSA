@@ -34,7 +34,7 @@ class Cajero{
     //Metodo para crar nuevos usuarios o tarjetas
     public function crearUsuario($conexion){
         //Crecion de variables para el metodo
-        $nip_aleatorio = sprintf('%04d', rand(0,9));
+        $nip_aleatorio = sprintf('%04d', rand(0, 9999));
         $nip_encriptado = md5($nip_aleatorio);
 
         //Validacion si existe un usuario con ese correo
