@@ -17,18 +17,18 @@
             <h1 class="main-titulo">Te damos la bienvenida a nuestra familia.</h1>
             <h2 class="main-subtitulo">Por favor, llene el siguiente formulario.</h2>
             <section class="formulario">
-                <form action="" method="post">
+                <form action="../Control/CajeroControl.php" method="post">
                     <label>Nombre(s)</label>
                     <input class="input-nombre" type="text" name="nombre" id="nombre" required><br>
                     
-                    <input class="input-apellidoP" type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido paterno" required>
+                    <input class="input-apellidoP" type="text" name="apellidoP" id="apellidoP" placeholder="Apellido paterno" required>
 
-                    <input class="input-apellidoM" type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido materno" required><br>
+                    <input class="input-apellidoM" type="text" name="apellidoM" id="apellidoM" placeholder="Apellido materno" required><br>
 
                     <label>Correo electrónico</label>
                     <input class="input-email" type="email" name="email" id="email" required><br>
 
-                    <label>Calle</label>
+                    <label>Calle y número</label>
                     <input class="input-calle" type="text" name="calle" id="calle" required><br>
 
                     <label>Colonia</label>
@@ -70,7 +70,7 @@
                         <option value="Zacatecas">Zacatecas</option>
                     </select>
 
-                    <input class="input-cp" type="number" name="cp" id="cp" placeholder="Codigo Postal" required><br>
+                    <input class="input-cp" type="text" name="codigoPostal" id="cp" placeholder="Codigo Postal" maxlength="5" required><br>
 
                     <input type="checkbox" name="condiciones" id="condiciones">
                     <label>Acepto Términos y Condiciones</label><br>
