@@ -20,5 +20,9 @@ switch($_REQUEST['option']){
     case 2:
         $usuario -> login($conexion, $_REQUEST['nip']);
     break;
+
+    case 3:
+        $usuario->actualizarSaldo($conexion, $_REQUEST['saldo'], $_POST['usuario_id']);
+    break;
 }
 ?>

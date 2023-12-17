@@ -4,7 +4,7 @@ session_start(); //Inicia la sesion
 if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])) {
     $usuario_nombre = $_SESSION['usuario_nombre'];
     $usuario_apellidoP = $_SESSION['usuario_apellidoP'];
-    $usuario_saldo = $_SESSION['usuario_saldo'];
+    $usuario_id = $_SESSION['usuario_id'];
 } else {
     //Sino hay una sesion iniciada direcciona al index
     header('Location: ../index.html');
@@ -30,17 +30,32 @@ if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP']))
     <main>
         <div class="card-main">
             <h1 class="main-titulo">¡Hola,
-                <?php echo $usuario_nombre ?>!.
+                <?php echo $usuario_nombre; ?>!.
             </h1>
-            <h2 class="main-subtitulo">Su saldo actual es de: $<?php echo $usuario_saldo?></h2>
+            <h2 class="main-subtitulo">Su saldo actual es de: $
+                <?php 
+                require("../Modelo/ConexionBD.php");
+                $conexion = new ConexionBD();
+                $conexion -> conectorBD();
+                $conexion -> cerrarBD();
+                $usuario_saldo = 0;
+                $registro = mysqli_query($conexion->conectorBD(), "SELECT usuario_saldo FROM usuarios WHERE usuario_id = '$usuario_id'");
+                if($registro && ($fila = mysqli_fetch_assoc($registro))) {
+                $usuario_saldo = $fila['usuario_saldo'];
+                echo $usuario_saldo;
+                }
+                ?>
+            </h2>
             <div class="input-desposito">
-                <form action="" method="post">
-                    <label class="desposito_label">Ingrese la cantidad a depositar</label><br>
-                    <input class="desposito_input" type="number" name="desposito"><br>
+                <form action="../Control/CajeroControl.php" method="post">
+                    <label class="desposito_label">Por favor, ingrese la cantidad a depositar.</label><br>
+                    <input class="desposito_input" type="number" name="saldo" required><br>
                     <input type="hidden" name="option" value="3">
-                    <div class = "deposito_enlaces">
+                    <input type="hidden" name="usuario_id" value="<?php echo $usuario_id; ?>">
+                    <div class="deposito_enlaces">
                         <input class="desposito_submit bg-success" type="submit" value="Depositar">
-                        <button type="button" class="desposito_cancelar btn btn-danger" href="index_usuario.php">Cancelar</button>
+                        <a href="index_usuario.php"><button type="button"
+                                class="desposito_cancelar btn btn-danger">Cancelar</button></a>
                     </div>
                 </form>
             </div>

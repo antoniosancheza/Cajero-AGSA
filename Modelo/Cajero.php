@@ -74,5 +74,13 @@ class Cajero{
 
         $conexion->cerrarBD();
     }
+
+    public function actualizarSaldo($conexion, $saldo, $usuario_id){
+        $registro = mysqli_query($conexion->conectorBD(), "UPDATE usuarios SET usuario_saldo = usuario_saldo + $saldo WHERE usuario_id = '$usuario_id'")
+        or die("mysqli_error($conexion");
+        echo '<script>alert("El deposito se efectuo correctamente")</script>';
+        header('refresh:0.5; url=../Vista/Depositar.php');
+        $conexion->cerrarBD();
+    }
 }
 ?>
