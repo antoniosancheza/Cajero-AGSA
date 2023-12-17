@@ -29,10 +29,7 @@ if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP']))
 <body>
     <main>
         <div class="card-main">
-            <h1 class="main-titulo">¡Hola,
-                <?php echo $usuario_nombre; ?>!.
-            </h1>
-            <h2 class="main-subtitulo">Su saldo actual es de: $
+            <h2 class="main-subtitulo"><?php echo $usuario_nombre; ?> tu saldo actual es de: $
                 <?php 
                 require("../Modelo/ConexionBD.php");
                 $conexion = new ConexionBD();
