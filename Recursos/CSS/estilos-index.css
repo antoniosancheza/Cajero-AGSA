@@ -8,6 +8,24 @@
     --font: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.boton_salir{
+    float: right;
+    padding-top: 2%;
+    padding-right: 2%;
+}
+
+.boton_salir a{
+    text-decoration: none;
+    color: white;
+    border: 1px solid red;
+    padding: 2px;
+    background-color: red;
+    border-radius: 12px;
+}
+
+.boton_salir a:hover{
+    color: black;
+}
 
 .card-main{
     border: 2px solid var(--colorPrincipal);

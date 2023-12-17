@@ -1,10 +1,10 @@
 <?php
 session_start(); //Inicia la sesion
 //Se valida que haya un sesion iniciada
-if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
+if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])) {
     $usuario_nombre = $_SESSION['usuario_nombre'];
     $usuario_apellidoP = $_SESSION['usuario_apellidoP'];
-}else{
+} else {
     //Sino hay una sesion iniciada direcciona al index
     header('Location: ../index.html');
     exit();
@@ -28,17 +28,16 @@ if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
 <body>
     <main>
         <div class="card-main">
-            <div class="boton_salir">
-                <a href="Salir.php"><i class="bi bi-box-arrow-left"></i> Salir</a>
-            </div>
-            <h1 class="main-titulo">¡Hola, <?php echo $usuario_nombre?>! Bienvenido.</h1>
+            <h1 class="main-titulo">¡Hola,
+                <?php echo $usuario_nombre ?>! Bienvenido.
+            </h1>
             <h2 class="main-subtitulo">¿Qué deseas realizar el día de hoy?</h2>
             <div class="enlaces">
                 <div class="enlace-retirar bg-success">
                     <a href="Vista/login.html"><i class="bi bi-cash-coin"></i> Retirar</a>
                 </div>
                 <div class="enlace-depositar bg-danger">
-                    <a href="Depositar.php"><i class="bi bi-arrow-down-up"></i> Depositar</a>
+                    <a href="Vista/login.html"><i class="bi bi-arrow-down-up"></i> Depositar</a>
                 </div>
                 <div class="enlace-nuevaTrajeta bg-primary">
                     <a href="Vista/solicitarTarjeta.html"><i class="bi bi-credit-card-2-back-fill"></i> Solicitar
