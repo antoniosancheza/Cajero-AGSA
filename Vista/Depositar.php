@@ -4,6 +4,7 @@ session_start(); //Inicia la sesion
 if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])) {
     $usuario_nombre = $_SESSION['usuario_nombre'];
     $usuario_apellidoP = $_SESSION['usuario_apellidoP'];
+    $usuario_saldo = $_SESSION['usuario_saldo'];
 } else {
     //Sino hay una sesion iniciada direcciona al index
     header('Location: ../index.html');
@@ -20,7 +21,7 @@ if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Recursos/CSS/estilos-index.css">
+    <link rel="stylesheet" href="../Recursos/CSS/estilos-deposito.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <title>Banco - Bienvenida</title>
 </head>
@@ -29,20 +30,19 @@ if (isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP']))
     <main>
         <div class="card-main">
             <h1 class="main-titulo">¡Hola,
-                <?php echo $usuario_nombre ?>! Bienvenido.
+                <?php echo $usuario_nombre ?>!.
             </h1>
-            <h2 class="main-subtitulo">¿Qué deseas realizar el día de hoy?</h2>
-            <div class="enlaces">
-                <div class="enlace-retirar bg-success">
-                    <a href="Vista/login.html"><i class="bi bi-cash-coin"></i> Retirar</a>
-                </div>
-                <div class="enlace-depositar bg-danger">
-                    <a href="Vista/login.html"><i class="bi bi-arrow-down-up"></i> Depositar</a>
-                </div>
-                <div class="enlace-nuevaTrajeta bg-primary">
-                    <a href="Vista/solicitarTarjeta.html"><i class="bi bi-credit-card-2-back-fill"></i> Solicitar
-                        tarjeta</a>
-                </div>
+            <h2 class="main-subtitulo">Su saldo actual es de: $<?php echo $usuario_saldo?></h2>
+            <div class="input-desposito">
+                <form action="" method="post">
+                    <label class="desposito_label">Ingrese la cantidad a depositar</label><br>
+                    <input class="desposito_input" type="number" name="desposito"><br>
+                    <input type="hidden" name="option" value="3">
+                    <div class = "deposito_enlaces">
+                        <input class="desposito_submit bg-success" type="submit" value="Depositar">
+                        <button type="button" class="desposito_cancelar btn btn-danger" href="index_usuario.php">Cancelar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>

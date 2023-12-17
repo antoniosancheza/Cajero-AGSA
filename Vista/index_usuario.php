@@ -4,6 +4,7 @@ session_start(); //Inicia la sesion
 if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
     $usuario_nombre = $_SESSION['usuario_nombre'];
     $usuario_apellidoP = $_SESSION['usuario_apellidoP'];
+    $usuario_saldo = $_SESSION['usuario_saldo'];
 }else{
     //Sino hay una sesion iniciada direcciona al index
     header('Location: ../index.html');

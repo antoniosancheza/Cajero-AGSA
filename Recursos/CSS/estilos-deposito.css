@@ -1,0 +1,77 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+:root {
+    --colorPrincipal: #153459;
+    --font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-main {
+    border: 2px solid var(--colorPrincipal);
+    background-color: var(--colorPrincipal);
+    width: 80%;
+    height: 350px;
+    margin-top: 15%;
+    margin-left: 10%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.main-titulo {
+    margin-top: 2%;
+    font-size: 50px;
+    font-family: var(--font);
+}
+
+.main-subtitulo {
+    margin-top: 2%;
+    font-size: 30px;
+    font-family: var(--font);
+}
+
+.desposito_label{
+    margin-top: 2%;
+    font-family: var(--font);
+}
+
+.desposito_input{
+    margin-top: 2%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.deposito_enlaces{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.desposito_submit{
+    height: 40px;
+    width: 180px;
+    border: 1px solid green;
+    border-radius: 12px;
+    color: white;
+}
+
+.desposito_submit:hover{
+    color: black;
+}
+
+.desposito_cancelar{
+    width: 180px;
+    height: 40px;
+    border: 1px solid red;
+    border-radius: 12px;
+    color: white;
+}
+
+.desposito_cancelar:hover{
+    color: black;
+}
