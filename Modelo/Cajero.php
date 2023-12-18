@@ -55,9 +55,11 @@ class Cajero{
         $conexion -> cerrarBD();
     }
 
+    //Metodo para iniciar sesion
     public function login($conexion, $nip){
+        //Encripta el nip
         $nip_encriptado = md5($nip);
-
+        //Sentencia SQL para el login
         $login = mysqli_query($conexion ->conectorBD(), "SELECT * FROM usuarios WHERE usuario_nip = '$nip_encriptado'");
         if($log = mysqli_fetch_array($login)){
             session_start();
@@ -71,16 +73,48 @@ class Cajero{
             echo '<script>alert("El es NIP incorrecto")</script>';
             header('refresh:0.5; url=../Vista/login.html');
         }
-
+        //Se cierra la BD
         $conexion->cerrarBD();
     }
 
+
+    //Metodo para realizar el deposito
     public function actualizarSaldo($conexion, $saldo, $usuario_id){
+        //Sentencia SQL para actualizar el saldo
         $registro = mysqli_query($conexion->conectorBD(), "UPDATE usuarios SET usuario_saldo = usuario_saldo + $saldo WHERE usuario_id = '$usuario_id'")
         or die("mysqli_error($conexion");
         echo '<script>alert("El deposito se efectuo correctamente")</script>';
         header('refresh:0.5; url=../Vista/Depositar.php');
+        //Se cierra BD
         $conexion->cerrarBD();
+    }
+    
+    //Metodo para consultar el saldo
+    public function consultarSaldo($conexion, $usuario_id){
+        $usuario_saldo = 0;
+        //Sentencia SQL para consultar el saldo
+        $registro = mysqli_query($conexion->conectorBD(), "SELECT usuario_saldo FROM usuarios WHERE usuario_id = '$usuario_id'");
+        if($registro && ($fila = mysqli_fetch_assoc($registro))) {
+            $usuario_saldo = $fila['usuario_saldo'];
+            echo $usuario_saldo;
+        }
+        $conexion->cerrarBD();
+    }
+
+
+    //Metodo para retirar
+    public function retirar($conexion, $usuario_id, $saldo_retirar){
+        //Sentencia SQL para validar que el saldo sea mayor que el saldo de la BD
+        $registro = mysqli_query($conexion->conectorBD(), "SELECT * FROM usuarios WHERE usuario_saldo < $saldo_retirar");
+        if ($reg = mysqli_fetch_array($registro)) {
+            echo '<script>alert("Lo sentimos, no cuenta con el saldo suficiente")</script>';
+            header('refresh:0.5; url=../Vista/Retirar.php');
+        } else {
+            //Sentencia SQL paar realizar el retiro
+            mysqli_query($conexion->conectorBD(), "UPDATE usuarios SET usuario_saldo = usuario_saldo - $saldo_retirar WHERE usuario_saldo >= $saldo_retirar AND usuario_id = $usuario_id");
+            echo '<script>alert("El retiro se efectuó correctamente")</script>';
+            header('refresh:0.5; url=../Vista/Retirar.php');
+        }
     }
 }
 ?>

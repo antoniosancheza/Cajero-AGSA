@@ -36,7 +36,7 @@ if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
             <h2 class="main-subtitulo">¿Qué deseas realizar el día de hoy?</h2>
             <div class="enlaces">
                 <div class="enlace-retirar bg-success">
-                    <a href="Vista/login.html"><i class="bi bi-cash-coin"></i> Retirar</a>
+                    <a href="Retirar.php"><i class="bi bi-cash-coin"></i> Retirar</a>
                 </div>
                 <div class="enlace-depositar bg-danger">
                     <a href="Depositar.php"><i class="bi bi-arrow-down-up"></i> Depositar</a>
