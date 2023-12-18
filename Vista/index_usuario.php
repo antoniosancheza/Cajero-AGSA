@@ -29,9 +29,6 @@ if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
 <body>
     <main>
         <div class="card-main">
-            <div class="boton_salir">
-                <a href="Salir.php"><i class="bi bi-box-arrow-left"></i> Salir</a>
-            </div>
             <h1 class="main-titulo">¡Hola, <?php echo $usuario_nombre?>!</h1>
             <h2 class="main-subtitulo">¿Qué deseas realizar el día de hoy?</h2>
             <div class="enlaces">
@@ -41,9 +38,8 @@ if(isset($_SESSION['usuario_nombre']) && isset($_SESSION['usuario_apellidoP'])){
                 <div class="enlace-depositar bg-danger">
                     <a href="Depositar.php"><i class="bi bi-arrow-down-up"></i> Depositar</a>
                 </div>
-                <div class="enlace-nuevaTrajeta bg-primary">
-                    <a href="solicitarTarjeta.html"><i class="bi bi-credit-card-2-back-fill"></i> Solicitar
-                        tarjeta</a>
+                <div class="enlace-depositar bg-danger">
+                    <a href="Salir.php"><i class="bi bi-box-arrow-left"></i> Salir</a>
                 </div>
             </div>
         </div>
