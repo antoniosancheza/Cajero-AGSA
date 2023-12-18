@@ -70,7 +70,7 @@ class Cajero{
 
             header('Location: ../Vista/index_usuario.php');
         }else{
-            echo '<script>alert("El es NIP incorrecto")</script>';
+            echo '<script>alert("El NIP es incorrecto")</script>';
             header('refresh:0.5; url=../Vista/login.html');
         }
         //Se cierra la BD
