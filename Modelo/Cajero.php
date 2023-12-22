@@ -42,14 +42,14 @@ class Cajero{
         //Validacion si existe un usuario con ese nombre
         $registro = mysqli_query($conexion ->conectorBD(), "SELECT * FROM usuarios WHERE usuario_nombre = '$this->nombre' OR usuario_email = '$this->email'");
         if($reg = mysqli_fetch_array($registro)){
-            echo '<script>alert("El usuario o el correo electronico ya existe")</script>';
             header('refresh:0.5; url=../Vista/solicitarTarjeta.html');
+            echo '<script>alert("El usuario o el correo electronico ya existe")</script>';
         }else{
             //Crecion del nuevo usuario
-            mysqli_query($conexion->conectorBD(), "INSERT INTO usuarios(usuario_nombre, usuario_apellidoP, usuario_apellidoM, usuario_email, usuario_nip, usuario_calle, usuario_colonia, usuario_estado, usuario_codigoPostal)
-            VALUES ('$this->nombre', '$this->apellidoP', '$this->apellidoM', '$this->email', '$nip_encriptado', '$this->calle', '$this->colonia', '$this->estado', '$this->codigoPostal')");
-            echo '<script>alert("Se a registrado correctamente.\nSu NIP es: ' . $nip_aleatorio . '")</script>';
+            mysqli_query($conexion->conectorBD(), "INSERT INTO usuarios(usuario_nombre, usuario_apellidoP, usuario_apellidoM, usuario_email, usuario_nip, usuario_calle, usuario_colonia, usuario_estado, usuario_codigoPostal, usuario_saldo)
+            VALUES ('$this->nombre', '$this->apellidoP', '$this->apellidoM', '$this->email', '$nip_encriptado', '$this->calle', '$this->colonia', '$this->estado', '$this->codigoPostal', 0.00)");
             header('refresh:0.5; url=../index.html');
+            echo '<script>alert("Se a registrado correctamente.\nSu NIP es: ' . $nip_aleatorio . '")</script>';
         }
 
         $conexion -> cerrarBD();
@@ -70,8 +70,8 @@ class Cajero{
 
             header('Location: ../Vista/index_usuario.php');
         }else{
-            echo '<script>alert("El NIP es incorrecto")</script>';
             header('refresh:0.5; url=../Vista/login.html');
+            echo '<script>alert("El NIP es incorrecto")</script>';
         }
         //Se cierra la BD
         $conexion->cerrarBD();
@@ -83,8 +83,8 @@ class Cajero{
         //Sentencia SQL para actualizar el saldo
         $registro = mysqli_query($conexion->conectorBD(), "UPDATE usuarios SET usuario_saldo = usuario_saldo + $saldo WHERE usuario_id = '$usuario_id'")
         or die("mysqli_error($conexion");
-        echo '<script>alert("El deposito se efectuo correctamente")</script>';
         header('refresh:0.5; url=../Vista/Depositar.php');
+        echo '<script>alert("El deposito se efectuo correctamente")</script>';
         //Se cierra BD
         $conexion->cerrarBD();
     }
@@ -107,13 +107,13 @@ class Cajero{
         //Sentencia SQL para validar que el saldo sea mayor que el saldo de la BD
         $registro = mysqli_query($conexion->conectorBD(), "SELECT * FROM usuarios WHERE usuario_saldo < $saldo_retirar");
         if ($reg = mysqli_fetch_array($registro)) {
-            echo '<script>alert("Lo sentimos, no cuenta con el saldo suficiente")</script>';
             header('refresh:0.5; url=../Vista/Retirar.php');
+            echo '<script>alert("Lo sentimos, no cuenta con el saldo suficiente")</script>';
         } else {
             //Sentencia SQL paar realizar el retiro
             mysqli_query($conexion->conectorBD(), "UPDATE usuarios SET usuario_saldo = usuario_saldo - $saldo_retirar WHERE usuario_saldo >= $saldo_retirar AND usuario_id = $usuario_id");
-            echo '<script>alert("El retiro se efectuó correctamente")</script>';
             header('refresh:0.5; url=../Vista/Retirar.php');
+            echo '<script>alert("El retiro se efectuó correctamente")</script>';
         }
     }
 }
